@@ -99,4 +99,4 @@ ENV/
 # mkdocs documentation
 /site
 .idea/
-
+result*

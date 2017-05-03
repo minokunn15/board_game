@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from bord import Board
-from random import RandomActor
+from randomAct import RandomActor
 from dqn import QFunctions
 import chainer
 import chainerrl
@@ -50,7 +50,7 @@ if __name__ == "__main__":
         turn = np.random.choice([0,1])
         last_state = None
         while not b.done:
-            action = agents[turn].act_and_train(b.board.copy,reward)
+            action = agents[turn].act_and_train(b.board.copy(),reward)
             b.move(action,1)
             #ゲームが終わった場合
             if b.done == True:
@@ -67,7 +67,7 @@ if __name__ == "__main__":
                 if agents[1 if turn == 0 else 0].last_state is not None and b.missed is False:
                     agents[1 if turn == 0 else 0].stop_episode_and_train(last_state, reward*-1, True)
             else:
-                last_state = b.boar.copy()
+                last_state = b.board.copy()
                 b.board = b.board * -1
                 turn = 1 if turn == 0 else 0
 
