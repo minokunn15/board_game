@@ -60,7 +60,7 @@ if __name__ == "__main__":
                 elif b.winner == 0:
                     draw += 1
                 else:
-                    reward = -1
+                    reward = -10
                 if b.missed is True:
                     miss += 1
                 agents[turn].stop_episode_and_train(b.board.copy(), reward, True)
@@ -71,7 +71,7 @@ if __name__ == "__main__":
                 b.board = b.board * -1
                 turn = 1 if turn == 0 else 0
 
-                #コンソールに進捗表示
+        #コンソールに進捗表示
         if i % 100 == 0:
             print("episode:", i, " / rnd:", ra.random_count, " / miss:", miss, " / win:", win, " / draw:", draw, " / statistics:", agent_p1.get_statistics(), " / epsilon:", agent_p1.explorer.epsilon)
             #カウンタの初期化
